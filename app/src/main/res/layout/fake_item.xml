@@ -21,8 +21,6 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             app:cardCornerRadius="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
             app:cardElevation="50dp"
             android:layout_marginBottom="5dp"
             >
@@ -31,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/shopping"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 ></ImageView>
@@ -60,7 +58,7 @@
                 android:textAlignment="textStart"
                 android:textSize="25sp"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-condensed"></TextView>
+                android:fontFamily="@font/myfont"></TextView>
 
 
             <TextView
@@ -73,7 +71,7 @@
                 android:textAlignment="textStart"
                 android:textSize="20dp"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-condensed"></TextView>
+                android:fontFamily="@font/tiltwarp"></TextView>
 
             <TextView
                 android:id="@+id/item_Description"

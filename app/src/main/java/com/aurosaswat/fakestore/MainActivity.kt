@@ -1,8 +1,12 @@
 package com.aurosaswat.fakestore
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.ActivityInfo
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -13,11 +17,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        val window = this.window
+        window.statusBarColor = Color.parseColor("#2f3640")
 //        We're using GlobalScope.launch to launch a coroutine to make the API request.
         GlobalScope.launch(Dispatchers.IO) {
             try {
@@ -36,6 +44,8 @@ class MainActivity : AppCompatActivity() {
                                     layoutManager = LinearLayoutManager(this@MainActivity)
                                     adapter =response.body()?.let { FakeStoreRecyclerViewAdapter(it) }
                                 }
+
+
                             }
                         }
                         override fun onFailure(call: Call<MutableList<PostModel>>, t: Throwable) {
