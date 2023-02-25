@@ -15,6 +15,7 @@ class FakeStoreViewHolder(view: View):RecyclerView.ViewHolder(view){
     val description=view.findViewById<TextView>(R.id.item_Description)
     val category=view.findViewById<TextView>(R.id.item_Category)
     val image=view.findViewById<ImageView>(R.id.item_image)
+    val rating=view.findViewById<TextView>(R.id.item_Ratings)
 
     fun bindView(postModel: PostModel){
         title.text=postModel.title
@@ -25,10 +26,10 @@ class FakeStoreViewHolder(view: View):RecyclerView.ViewHolder(view){
             .error(R.drawable.ic_launcher_background)
             .placeholder(R.drawable.ic_launcher_background)
             .into(image)
+        rating.text=postModel.rating?.rate.toString()
     }
 
 }
-
 
 class FakeStoreRecyclerViewAdapter(private var postModel: MutableList<PostModel>):RecyclerView.Adapter<FakeStoreViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FakeStoreViewHolder {

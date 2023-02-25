@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 val serviceGenerator = ServiceGenerator().buildService(ApiService::class.java)
                 val call = serviceGenerator.getPosts()
+//                val call2=serviceGenerator.getRatings()
                 withContext(Dispatchers.Main) {
                     call.enqueue(object : Callback<MutableList<PostModel>> {
                         override fun onResponse(
@@ -30,11 +31,10 @@ class MainActivity : AppCompatActivity() {
                             response: Response<MutableList<PostModel>>
                         ) {
                             if (response.isSuccessful) {
-                                Log.e(".MainActivity", "${response.body().toString()}")
+                                Log.e(".MainActivity", response.body().toString())
                                 recycler_view.apply {
                                     layoutManager = LinearLayoutManager(this@MainActivity)
-                                    adapter =
-                                        response.body()?.let { FakeStoreRecyclerViewAdapter(it) }
+                                    adapter =response.body()?.let { FakeStoreRecyclerViewAdapter(it) }
                                 }
                             }
                         }
